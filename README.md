@@ -1,43 +1,68 @@
-# DMB - Página Web Profesional
+# 🚀 DMB - Página Web Profesional
 
 Una página web moderna y elegante para DMB, empresa especializada en diseño UI/UX y desarrollo web. El sitio presenta un diseño monocromático minimalista con animaciones 3D interactivas y un sistema de temas claro/oscuro.
 
-## 🚀 Características
+![DMB Website Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![GitHub](https://img.shields.io/badge/GitHub-DeevTy/DMB-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-### Diseño y UX
+## ✨ Características Destacadas
+
+### 🎨 Diseño y UX
 - **Diseño monocromático**: Esquema de colores blanco y negro con transiciones suaves
 - **Sistema de temas**: Cambio dinámico entre modo claro y oscuro
 - **Diseño responsivo**: Optimizado para todos los dispositivos
 - **Tipografía elegante**: Playfair Display para títulos, Inter para texto
 - **Animaciones sutiles**: Transiciones fluidas y efectos hover
 
-### Animaciones 3D
+### 🌟 Animaciones 3D
 - **Esfera interactiva**: Objeto 3D en la sección hero que responde al movimiento del mouse
 - **Three.js**: Implementado con WebGL para rendimiento óptimo
 - **Efectos de parallax**: Elementos que se mueven a diferentes velocidades al hacer scroll
 - **Animaciones de entrada**: Elementos que aparecen con efectos fade-in al hacer scroll
 
-### Funcionalidades
+### 🔧 Funcionalidades
 - **Navegación suave**: Scroll automático a secciones
 - **Formulario de contacto**: Con validación y mensaje de confirmación
 - **Casos de estudio**: Modal interactivo con información detallada de proyectos
 - **Menú móvil**: Navegación adaptada para dispositivos móviles
 - **Optimización SEO**: Estructura semántica y metadatos
 
-### Accesibilidad
-- **Navegación por teclado**: Soporte completo para usuarios que navegan con teclado
-- **Contraste alto**: Compatible con preferencias de alto contraste
-- **Movimiento reducido**: Respeta las preferencias de movimiento del usuario
-- **ARIA labels**: Etiquetas de accesibilidad para lectores de pantalla
+## 🚀 Instalación y Uso
+
+### Opción 1: Clonar el repositorio
+```bash
+git clone https://github.com/DeevTy/DMB.git
+cd DMB
+```
+
+### Opción 2: Descargar ZIP
+1. Haz clic en el botón "Code" → "Download ZIP"
+2. Extrae el archivo en tu carpeta de proyectos
+3. Abre `index.html` en tu navegador
+
+### Opción 3: Servidor local (Recomendado)
+```bash
+# Instalar dependencias (opcional)
+npm install
+
+# Iniciar servidor de desarrollo
+npm start
+# o
+npm run dev
+```
 
 ## 📁 Estructura del Proyecto
 
 ```
-Dmb/
+DMB/
 ├── index.html          # Página principal
 ├── styles.css          # Estilos CSS con variables y temas
 ├── script.js           # JavaScript con animaciones y funcionalidades
-└── README.md           # Documentación del proyecto
+├── package.json        # Configuración del proyecto
+├── README.md           # Documentación del proyecto
+├── .gitignore          # Archivos ignorados por Git
+└── upload-to-github.bat # Script para subir a GitHub
 ```
 
 ## 🛠️ Tecnologías Utilizadas
@@ -83,35 +108,6 @@ Dmb/
 - Enlaces a redes sociales
 - Información de copyright
 
-## 🚀 Cómo Usar
-
-### Instalación Local
-1. Clona o descarga los archivos del proyecto
-2. Abre `index.html` en tu navegador web
-3. ¡Disfruta de la experiencia!
-
-### Personalización
-
-#### Cambiar Colores
-Edita las variables CSS en `styles.css`:
-```css
-:root {
-    --bg-primary: #ffffff;
-    --text-primary: #000000;
-    /* ... más variables */
-}
-```
-
-#### Modificar Contenido
-- **Texto**: Edita directamente en `index.html`
-- **Imágenes**: Reemplaza las URLs de Unsplash con tus propias imágenes
-- **Casos de estudio**: Modifica el objeto `caseStudies` en `script.js`
-
-#### Añadir Nuevas Secciones
-1. Agrega el HTML en `index.html`
-2. Añade los estilos correspondientes en `styles.css`
-3. Implementa funcionalidades JavaScript si es necesario
-
 ## 🎯 Características Técnicas
 
 ### Rendimiento
@@ -131,35 +127,6 @@ Edita las variables CSS en `styles.css`:
 - **Open Graph**: Metadatos para redes sociales
 - **Sitemap**: Estructura clara para motores de búsqueda
 
-## 🔧 Funcionalidades Avanzadas
-
-### Sistema de Temas
-```javascript
-// Cambiar tema programáticamente
-document.documentElement.setAttribute('data-theme', 'dark');
-localStorage.setItem('theme', 'dark');
-```
-
-### Animaciones 3D
-```javascript
-// Personalizar la esfera 3D
-geometry = new THREE.SphereGeometry(2, 64, 64);
-material = new THREE.MeshBasicMaterial({
-    color: '#000000',
-    wireframe: true,
-    opacity: 0.3
-});
-```
-
-### Formulario de Contacto
-```javascript
-// Manejar envío del formulario
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Lógica de envío personalizada
-});
-```
-
 ## 📱 Responsive Design
 
 ### Breakpoints
@@ -173,42 +140,22 @@ form.addEventListener('submit', function(e) {
 - Imágenes optimizadas
 - Scroll suave
 
-## 🎨 Personalización de Estilos
+## 🔧 Personalización
 
-### Variables CSS Principales
+### Cambiar Colores
+Edita las variables CSS en `styles.css`:
 ```css
 :root {
-    --bg-primary: #ffffff;        /* Fondo principal */
-    --text-primary: #000000;      /* Texto principal */
-    --accent-color: #000000;      /* Color de acento */
-    --border-color: #e0e0e0;      /* Color de bordes */
-    --shadow-light: rgba(0,0,0,0.1); /* Sombra ligera */
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    /* ... más variables */
 }
 ```
 
-### Animaciones Personalizables
-```css
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-```
-
-## 🔍 Optimización
-
-### Performance
-- **Minificación**: CSS y JS optimizados
-- **Compresión**: Imágenes comprimidas
-- **Caching**: Headers de caché apropiados
-- **CDN**: Three.js cargado desde CDN
-
-### SEO
-- **Meta tags**: Completos y optimizados
-- **Schema markup**: Estructura de datos
-- **Sitemap**: Generación automática
-- **Analytics**: Preparado para Google Analytics
+### Modificar Contenido
+- **Texto**: Edita directamente en `index.html`
+- **Imágenes**: Reemplaza las URLs de Unsplash con tus propias imágenes
+- **Casos de estudio**: Modifica el objeto `caseStudies` en `script.js`
 
 ## 🚀 Despliegue
 
@@ -224,18 +171,37 @@ form.addEventListener('submit', function(e) {
 3. Añade Google Analytics
 4. Configura formulario de contacto (Formspree, Netlify Forms)
 
-## 📞 Soporte
+## 🤝 Contribuir
 
-Para preguntas o soporte técnico:
-- **Email**: contacto@dmb.com
-- **Documentación**: Este README
-- **Issues**: Crear issue en el repositorio
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia MIT. Puedes usar, modificar y distribuir libremente.
 
+## 📞 Soporte
+
+Para preguntas o soporte técnico:
+- **Email**: contacto@dmb.com
+- **Documentación**: Este README
+- **Issues**: [Crear issue en GitHub](https://github.com/DeevTy/DMB/issues)
+
+## 🌟 Agradecimientos
+
+- [Three.js](https://threejs.org/) - Biblioteca 3D
+- [Google Fonts](https://fonts.google.com/) - Tipografías
+- [Unsplash](https://unsplash.com/) - Imágenes de stock
+- [GitHub](https://github.com/) - Hosting del código
+
 ---
 
 **DMB** - Diseño UI/UX y Desarrollo Web
-*Construyendo el futuro digital, un píxel a la vez.* 
+*Construyendo el futuro digital, un píxel a la vez.*
+
+---
+
+⭐ **Si te gusta este proyecto, ¡dale una estrella en GitHub!** 

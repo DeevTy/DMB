@@ -1,0 +1,56 @@
+=======================================
+COMANDOS PARA SUBIR A GITHUB
+=======================================
+
+1. Abre PowerShell como Administrador
+2. Navega a la carpeta del proyecto:
+   cd "C:\Users\Micaela\Desktop\Dmb"
+
+3. Configura Git:
+   git config user.name "DeevTy"
+   git config user.email "deevty@github.com"
+
+4. Verifica el estado:
+   git status
+
+5. Agrega todos los archivos:
+   git add .
+
+6. Haz el commit:
+   git commit -m "Initial commit: Página web profesional de DMB con diseño monocromático, animaciones 3D y sistema de temas"
+
+7. Sube a GitHub:
+   git push -u origin master
+
+=======================================
+SI TE PIDE CREDENCIALES:
+=======================================
+
+Usuario: DeevTy
+Contraseña: [Tu Personal Access Token]
+
+Para crear un token:
+1. Ve a GitHub.com
+2. Settings → Developer settings → Personal access tokens
+3. Generate new token (classic)
+4. Selecciona "repo" permissions
+5. Copia el token y úsalo como contraseña
+
+=======================================
+ARCHIVOS QUE SE VAN A SUBIR:
+=======================================
+
+✅ index.html - Página principal
+✅ styles.css - Estilos CSS
+✅ script.js - JavaScript con animaciones
+✅ package.json - Configuración del proyecto
+✅ README.md - Documentación
+✅ .gitignore - Archivos ignorados
+✅ upload-to-github.bat - Script de subida
+✅ upload.ps1 - Script PowerShell
+✅ COMANDOS-GITHUB.txt - Este archivo
+
+=======================================
+¡LISTO! Tu sitio web estará en:
+https://github.com/DeevTy/DMB
+======================================= 
