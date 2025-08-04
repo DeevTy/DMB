@@ -63,6 +63,7 @@ body {
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 /* Tipografía */
@@ -85,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 9999; /* Aumentar z-index para asegurar que esté siempre por encima */
     background: var(--overlay-color);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
@@ -202,6 +203,8 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     position: relative;
     overflow: hidden;
+    margin-bottom: 0;
+    z-index: 2;
 }
 
 .hero-background {
@@ -330,11 +333,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Secciones */
 section {
     padding: 100px 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem; /* Reducir margen inferior del header */
 }
 
 .section-title {
@@ -354,65 +359,92 @@ section {
 /* Servicios */
 .services {
     background-color: var(--bg-secondary);
+    position: relative;
+    padding: 100px 0;
+    margin-top: 0;
+    z-index: 1;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem; /* Reducir espacio entre tarjetas */
+    align-items: stretch;
 }
 
 .service-card {
     background-color: var(--card-bg);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 20px var(--shadow-light);
     transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    transform: translateY(0); /* Resetear cualquier transformación */
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) !important; /* Forzar el hover */
     box-shadow: 0 20px 40px var(--shadow-medium);
+    z-index: 2;
 }
 
 .service-icon {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-color: var(--bg-secondary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
 }
 
 .service-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     color: var(--text-primary);
 }
 
 .service-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-primary);
 }
 
 .service-description {
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    flex-grow: 1;
 }
 
 .service-features {
     list-style: none;
+    margin-top: auto;
 }
 
 .service-features li {
-    padding: 0.5rem 0;
+    padding: 0.7rem 0;
     color: var(--text-secondary);
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
+    font-weight: 500;
 }
 
 .service-features li::before {
@@ -421,81 +453,16 @@ section {
     left: 0;
     color: var(--accent-color);
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
-/* Portafolio */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
 
-.portfolio-item {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.portfolio-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px var(--shadow-medium);
-}
-
-.portfolio-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.portfolio-image img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover .portfolio-image img {
-    transform: scale(1.1);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
-    display: flex;
-    align-items: flex-end;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-info {
-    padding: 2rem;
-    color: white;
-}
-
-.portfolio-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-info p {
-    margin-bottom: 1rem;
-    opacity: 0.9;
-}
 
 /* Contacto */
 .contact {
     background-color: var(--bg-secondary);
+    position: relative;
+    z-index: 1;
 }
 
 .contact-content {
@@ -905,17 +872,13 @@ section {
     
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
+
     
     /* Modal responsive */
-    .modal-content {
-        width: 95%;
-        max-height: 90vh;
-    }
+
     
     .case-study-services ul {
         flex-direction: column;
@@ -944,23 +907,28 @@ section {
         padding: 1.5rem;
     }
     
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+
+    
     .btn {
         width: 100%;
         justify-content: center;
     }
     
     /* Modal mobile */
-    .modal-body {
-        padding: 1rem;
-    }
+
     
-    .case-study-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .case-study-image img {
-        height: 200px;
-    }
+
 }
 
 /* Orientación landscape en móviles */

@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeThreeJS();
     initializeAnimations();
     initializeForm();
-    initializeModal();
+
     initializeMobileMenu();
     initializeSmoothScrolling();
+
     
     // Event listeners
     window.addEventListener('resize', onWindowResize);
@@ -160,12 +161,12 @@ function handleScroll() {
         header.style.backdropFilter = 'blur(10px)';
     }
     
-    // Parallax suave para elementos
-    const parallaxElements = document.querySelectorAll('.service-card, .portfolio-item');
-    parallaxElements.forEach((el, index) => {
-        const speed = 0.5 + (index * 0.1);
-        const yPos = -(scrollTop * speed);
-        el.style.transform = `translateY(${yPos}px)`;
+    // Limpiar transformaciones de las tarjetas de servicios
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card) => {
+        if (!card.matches(':hover')) {
+            card.style.transform = 'translateY(0)';
+        }
     });
 }
 
@@ -207,151 +208,9 @@ function initializeForm() {
     });
 }
 
-// Sistema de modal para casos de estudio
-function initializeModal() {
-    const modal = document.getElementById('caseStudyModal');
-    const modalClose = document.getElementById('modalClose');
-    const modalBody = document.getElementById('modalBody');
-    
-    // Cerrar modal
-    modalClose.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-    
-    // Cerrar modal al hacer clic fuera
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-    
-    // Cerrar modal con Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
-        }
-    });
-}
 
-// Función para abrir casos de estudio
-function openCaseStudy(project) {
-    const modal = document.getElementById('caseStudyModal');
-    const modalBody = document.getElementById('modalBody');
-    
-    const caseStudies = {
-        ecommerce: {
-            title: 'E-commerce Premium',
-            client: 'TechStore',
-            services: ['Diseño UI/UX', 'Desarrollo Web', 'Optimización SEO'],
-            challenge: 'Crear una plataforma de e-commerce moderna y escalable que ofrezca una experiencia de compra excepcional.',
-            solution: 'Desarrollamos una interfaz intuitiva con diseño centrado en el usuario, implementando las mejores prácticas de UX y tecnologías modernas.',
-            process: [
-                'Investigación de usuarios y análisis de competencia',
-                'Wireframing y prototipado interactivo',
-                'Diseño de interfaz y guías de estilo',
-                'Desarrollo frontend con React y backend con Node.js',
-                'Pruebas de usabilidad y optimización'
-            ],
-            results: [
-                'Aumento del 150% en conversiones',
-                'Reducción del 40% en tiempo de carga',
-                'Mejora del 85% en satisfacción del usuario'
-            ],
-            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop'
-        },
-        fintech: {
-            title: 'App Fintech',
-            client: 'FinanceApp',
-            services: ['Diseño UI/UX', 'Desarrollo Móvil', 'Integración API'],
-            challenge: 'Diseñar una aplicación móvil que simplifique la gestión financiera personal con un enfoque en seguridad y usabilidad.',
-            solution: 'Creamos una interfaz minimalista y segura que permite a los usuarios gestionar sus finanzas de manera intuitiva y eficiente.',
-            process: [
-                'Investigación de usuarios y análisis de necesidades',
-                'Diseño de wireframes y prototipos',
-                'Desarrollo de la interfaz con React Native',
-                'Integración con APIs bancarias seguras',
-                'Pruebas de usabilidad y seguridad'
-            ],
-            results: [
-                'Más de 50,000 descargas en el primer mes',
-                'Calificación de 4.8/5 en App Store',
-                'Reducción del 60% en tiempo de configuración'
-            ],
-            image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop'
-        },
-        dashboard: {
-            title: 'Dashboard Corporativo',
-            client: 'DataCorp',
-            services: ['Diseño UI/UX', 'Desarrollo Web', 'Visualización de Datos'],
-            challenge: 'Crear un dashboard ejecutivo que presente datos complejos de manera clara y accionable para la toma de decisiones.',
-            solution: 'Desarrollamos una interfaz de datos intuitiva con visualizaciones interactivas y reportes personalizables.',
-            process: [
-                'Análisis de requerimientos y datos',
-                'Diseño de arquitectura de información',
-                'Creación de componentes de visualización',
-                'Desarrollo con React y D3.js',
-                'Implementación de filtros y reportes'
-            ],
-            results: [
-                'Reducción del 70% en tiempo de análisis',
-                'Aumento del 200% en adopción de datos',
-                'Mejora del 90% en satisfacción de usuarios'
-            ],
-            image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop'
-        }
-    };
-    
-    const study = caseStudies[project];
-    if (!study) return;
-    
-    modalBody.innerHTML = `
-        <div class="case-study">
-            <div class="case-study-header">
-                <h2>${study.title}</h2>
-                <p class="case-study-client">Cliente: ${study.client}</p>
-            </div>
-            
-            <div class="case-study-image">
-                <img src="${study.image}" alt="${study.title}">
-            </div>
-            
-            <div class="case-study-services">
-                <h3>Servicios</h3>
-                <ul>
-                    ${study.services.map(service => `<li>${service}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div class="case-study-content">
-                <div class="case-study-section">
-                    <h3>El Desafío</h3>
-                    <p>${study.challenge}</p>
-                </div>
-                
-                <div class="case-study-section">
-                    <h3>La Solución</h3>
-                    <p>${study.solution}</p>
-                </div>
-                
-                <div class="case-study-section">
-                    <h3>El Proceso</h3>
-                    <ol>
-                        ${study.process.map(step => `<li>${step}</li>`).join('')}
-                    </ol>
-                </div>
-                
-                <div class="case-study-section">
-                    <h3>Resultados</h3>
-                    <ul>
-                        ${study.results.map(result => `<li>${result}</li>`).join('')}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    modal.classList.add('active');
-}
+
+
 
 // Menú móvil
 function initializeMobileMenu() {
@@ -500,7 +359,10 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+
+
 // Console log para desarrollo
 console.log('🚀 DMB Website loaded successfully!');
 console.log('💡 Tip: Try switching between light and dark themes');
-console.log('🎨 Tip: Hover over the 3D sphere to interact with it'); 
+console.log('🎨 Tip: Hover over the 3D sphere to interact with it');
+ 
