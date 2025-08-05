@@ -1,0 +1,4 @@
+[33mdbb8262[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Remove: Eliminar botón 'Explorar servicios' del hero section
+[33m5aa477b[m Fix: Corregir superposición en sección servicios y agregar favicon - Solucionado problema de posicionamiento de tarjetas de servicios - Agregado favicon SVG y ICO para el sitio - Mejorado z-index y estructura visual - Eliminado efecto parallax problemático - Optimizado scroll y navegación
+[33m1a36438[m Initial commit: PÃ¡gina web profesional de DMB con diseÃ±o monocromÃ¡tico, animaciones 3D y sistema de temas
+[33m81fa127[m Initial commit: Página web profesional de DMB con diseño monocromático, animaciones 3D y sistema de temas
